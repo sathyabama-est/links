@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Buttons Page</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .button-container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+        }
+        
+        .big-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: clamp(16px, 2.5vw, 20px);
+            font-weight: bold;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            word-wrap: break-word;
+        }
+        
+        .big-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.03);
+        }
+        /* Mobile Optimization */
+        
+        @media (max-width: 480px) {
+            .big-btn {
+                padding: 14px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="button-container">
+        <h1 class="header">Ajith Ramesh</h1>
+
+        <button class="big-btn" onclick="goToLink1()">RESUME</button>
+        <button class="big-btn" onclick="goToLink2()">Aadhaar card</button>
+        <button class="big-btn" onclick="goToLink3()">College ID</button>
+        <button class="big-btn" onclick="goToLink4()">10th, 12th, College, Course certificates → Academic proof</button>
+        <button class="big-btn" onclick="goToLink5()">Portfolio</button>
+        <button class="big-btn" onclick="goToLink6()">GitHub</button>
+        <button class="big-btn" onclick="goToLink7()">LinkedIn</button>
+        <button class="big-btn" onclick="goToLink8()">Project Works</button>
+    </div>
+
+    <script>
+        function goToLink1() {
+            window.location.href = "https://sathyabama-est.github.io/links/LTIMindtree%20(1).pdf";
+        }
+
+        function goToLink2() {
+            window.location.href = "https://sathyabama-est.github.io/links/ajith%20athar.pdf";
+        }
+
+        function goToLink3() {
+            window.location.href = "https://sathyabama-est.github.io/links/PDFGallery_20260219_120334.pdf";
+        }
+
+        function goToLink4() {
+            window.location.href = "https://ajith-data-analyst.github.io/Portfolio/certification.html#section1";
+        }
+
+        function goToLink5() {
+            window.location.href = "https://ajith-data-analyst.github.io/Portfolio/home.html";
+        }
+
+        function goToLink6() {
+            window.location.href = "https://github.com/Ajith-data-analyst";
+        }
+
+        function goToLink7() {
+            window.location.href = "https://www.linkedin.com/in/ajith-ramesh-data-analyst/";
+        }
+
+        function goToLink8() {
+            window.location.href = "https://ajith-data-analyst.github.io/Portfolio/home.html";
+        }
+    </script>
+
+</body>
+
+</html>
