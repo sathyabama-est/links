@@ -4,53 +4,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Buttons Page</title>
+
+    <title>Ajith Ramesh | Digital Verification Hub</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        body {
+        /* ================= ROOT ================= */
+        
+         :root {
+            --primary: #2563eb;
+            --accent: #38bdf8;
+            --success: #22c55e;
+            --bg1: #eef2ff;
+            --bg2: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.82);
+            --border: rgba(0, 0, 0, 0.08);
+            --radius: 22px;
+            --shadow-xl: 0 30px 70px rgba(0, 0, 0, 0.18);
+            --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        /* ================= RESET ================= */
+        
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: white;
-            font-family: Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Inter, sans-serif;
         }
         
-        .button-container {
-            width: 100%;
-            max-width: 500px;
+        html {
+            scroll-behavior: smooth;
+        }
+        /* ================= BODY ================= */
+        
+        body {
+            background: radial-gradient(circle at top right, #dbeafe, transparent 60%), radial-gradient(circle at bottom left, #e0f2fe, transparent 60%), linear-gradient(120deg, var(--bg1), var(--bg2));
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        /* Mobile scroll */
+        
+        @media(max-width:768px) {
+            body {
+                overflow: auto;
+            }
+        }
+        /* ================= DASHBOARD ================= */
+        
+        .dashboard {
+            width: 96%;
+            max-width: 1200px;
+            height: 92vh;
+            background: var(--glass);
+            backdrop-filter: blur(22px);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-xl);
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            animation: boot 0.9s ease;
+        }
+        /* Mobile */
+        
+        @media(max-width:768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                height: auto;
+                margin: 24px 0;
+            }
+        }
+        /* ================= ANIM ================= */
+        
+        @keyframes boot {
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        /* ================= SIDEBAR ================= */
+        
+        .sidebar {
+            padding: 32px 26px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.75));
+            border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            align-items: center;
             text-align: center;
+            position: relative;
+        }
+        /* Glow Divider */
+        
+        .sidebar::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 18%;
+            width: 2px;
+            height: 64%;
+            background: linear-gradient(var(--primary), transparent);
+            opacity: 0.35;
+        }
+        /* ================= PROFILE ================= */
+        
+        .avatar {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            padding: 4px;
+            background: conic-gradient( from 180deg, var(--primary), var(--accent), var(--primary));
+            margin-bottom: 12px;
         }
         
-        .big-btn {
+        .avatar img {
             width: 100%;
-            padding: 16px;
-            font-size: clamp(16px, 2.5vw, 20px);
-            font-weight: bold;
-            background-color: #007BFF;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: white;
+        }
+        
+        .sidebar h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+        }
+        
+        .sidebar p {
+            font-size: 14px;
+            color: #555;
+            margin-top: 4px;
+        }
+        /* Verified Badge */
+        
+        .badge {
+            margin-top: 10px;
+            background: linear-gradient(45deg, #16a34a, #22c55e);
             color: white;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        /* ================= ACTIONS ================= */
+        
+        .actions {
+            width: 100%;
+            margin-top: 24px;
+        }
+        
+        .actions button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
             border: none;
             border-radius: 10px;
+            background: linear-gradient(45deg, var(--primary), #1d4ed8);
+            color: white;
+            font-weight: 700;
             cursor: pointer;
-            transition: 0.3s ease;
-            word-wrap: break-word;
+            transition: 0.25s;
         }
         
-        .big-btn:hover {
-            background-color: #0056b3;
-            transform: scale(1.03);
+        .actions button:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
         }
-        /* Mobile Optimization */
+        /* ================= QR ================= */
         
-        @media (max-width: 480px) {
-            .big-btn {
-                padding: 14px;
-                font-size: 15px;
+        #qr {
+            margin-top: 18px;
+            padding: 8px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        /* ================= MAIN ================= */
+        
+        .main {
+            padding: 34px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: 0.4px;
+        }
+        /* ================= TRUST BAR ================= */
+        
+        .trust {
+            background: linear-gradient(90deg, #eff6ff, #f0f9ff);
+            border: 1px solid #bfdbfe;
+            padding: 11px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        /* ================= LINKS ================= */
+        
+        .links {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+        /* ================= LINK CARD ================= */
+        
+        .link {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            position: relative;
+            transition: 0.28s;
+        }
+        /* Focus */
+        
+        .link:focus {
+            outline: 3px solid #93c5fd;
+        }
+        /* Hover */
+        
+        .link:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+            border-color: var(--primary);
+        }
+        /* Light Sweep */
+        
+        .link::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: linear-gradient( 120deg, transparent, rgba(37, 99, 235, 0.08), transparent);
+            opacity: 0;
+            transition: 0.3s;
+        }
+        
+        .link:hover::after {
+            opacity: 1;
+        }
+        /* ================= LOGO ================= */
+        
+        .icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+        }
+        /* ================= TEXT ================= */
+        
+        .link h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 4px;
+            letter-spacing: 0.2px;
+        }
+        
+        .link span {
+            font-size: 13.5px;
+            color: #555;
+            font-weight: 500;
+        }
+        /* ================= PRIORITY ================= */
+        
+        .primary {
+            border: 2px solid var(--primary);
+            background: linear-gradient(180deg, #eff6ff, white);
+            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.18);
+        }
+        /* ================= TAG ================= */
+        
+        .tag {
+            position: absolute;
+            top: 9px;
+            right: 9px;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 7px;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-weight: 700;
+        }
+        
+        .tage {
+            position: absolute;
+            top: 9px;
+            right: 9px;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 7px;
+            background: #ec5600;
+            color: #e0f2fe;
+            font-weight: 700;
+        }
+        /* ================= FOOTER ================= */
+        
+        .footer {
+            text-align: right;
+            font-size: 12px;
+            font-weight: 500;
+            color: #555;
+            margin-top: 15px;
+        }
+        /* ================= MOBILE ================= */
+        
+        @media(max-width:768px) {
+            .main {
+                padding: 24px;
+            }
+            .links {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -58,54 +353,205 @@
 
 <body>
 
-    <div class="button-container">
-        <h1 class="header">Ajith Ramesh</h1>
+    <div class="dashboard">
 
-        <button class="big-btn" onclick="goToLink1()">RESUME</button>
-        <button class="big-btn" onclick="goToLink2()">Aadhaar card</button>
-        <button class="big-btn" onclick="goToLink3()">College ID</button>
-        <button class="big-btn" onclick="goToLink4()">10th, 12th, College, Course certificates → Academic proof</button>
-        <button class="big-btn" onclick="goToLink5()">Portfolio</button>
-        <button class="big-btn" onclick="goToLink6()">GitHub</button>
-        <button class="big-btn" onclick="goToLink7()">LinkedIn</button>
-        <button class="big-btn" onclick="goToLink8()">Project Works</button>
+        <!-- ================= SIDEBAR ================= -->
+        <div class="sidebar">
+
+            <div class="avatar">
+                <img src="DSC_8268.png" alt="Ajith Ramesh">
+            </div>
+
+            <h1>Ajith Ramesh</h1>
+            <p>Data Analyst</p>
+
+
+
+            <div class="actions">
+
+                <button onclick="copyLink()">Copy Profile Link</button>
+
+
+            </div>
+
+            <div id="qr"></div>
+
+        </div>
+
+        <!-- ================= MAIN ================= -->
+        <div class="main">
+
+            <h2>Interview verification Links</h2>
+
+
+
+            <div class="links">
+
+                <!-- Resume -->
+                <div class="link primary" tabindex="0" onclick="openLink('https://ajith-data-analyst.github.io/Portfolio/Ajith_R_Resume.pdf')">
+
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png">
+                    </div>
+
+                    <div>
+                        <h3>Resume</h3>
+                        <span>Official CV</span>
+                    </div>
+
+                    <div class="tag">PRIORITY</div>
+                </div>
+                <!-- Portfolio -->
+                <div class="link primary" tabindex="0" onclick="openLink('https://ajith-data-analyst.github.io/Portfolio/home.html')">
+
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png ">
+                    </div>
+
+                    <div>
+                        <h3>Portfolio</h3>
+                        <span>Professional Works</span>
+                    </div>
+
+                    <div class="tag">PRIORITY</div>
+                </div>
+                <!-- Aadhaar -->
+                <div class="link" tabindex="0" onclick="openLink('https://sathyabama-est.github.io/links/ajith%20athar.pdf')">
+
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png">
+                    </div>
+
+                    <div>
+                        <h3>Aadhaar</h3>
+                        <span>Government Identity</span>
+                    </div>
+
+
+                </div>
+
+                <!-- GitHub -->
+                <div class="link" tabindex="0" onclick="openLink('https://github.com/Ajith-data-analyst')">
+
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png">
+                    </div>
+
+                    <div>
+                        <h3>GitHub</h3>
+                        <span>Source Repository</span>
+                    </div>
+
+                    <div class="tage">PRIORITY</div>
+                </div>
+                <!-- Projects -->
+                <div class="link" tabindex="0" onclick="openLink('https://ajith-data-analyst.github.io/Portfolio/home.html')">
+
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2721/2721295.png">
+                    </div>
+
+                    <div>
+                        <h3>Projects</h3>
+                        <span>Live Demonstrations</span>
+                    </div>
+
+                    <div class="tage">PRIORITY</div>
+                </div>
+                <!-- LinkedIn -->
+                <div class="link" tabindex="0" onclick="openLink('https://www.linkedin.com/in/ajith-ramesh-data-analyst/')">
+
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">
+                    </div>
+
+                    <div>
+                        <h3>LinkedIn</h3>
+                        <span>Professional Network</span>
+                    </div>
+
+                    <div class="tage">PRIORITY</div>
+                </div>
+                <!-- College -->
+                <div class="link" tabindex="0" onclick="openLink('https://sathyabama-est.github.io/links/PDFGallery_20260219_120334.pdf')">
+
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
+                    </div>
+
+                    <div>
+                        <h3>College ID</h3>
+                        <span>Institution Verification</span>
+                    </div>
+
+
+                </div>
+
+                <!-- Certificates -->
+                <div class="link" tabindex="0" onclick="openLink('https://ajith-data-analyst.github.io/Portfolio/certification.html')">
+
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991112.png">
+                    </div>
+
+                    <div>
+                        <h3>Certificates</h3>
+                        <span>Academic Records</span>
+                    </div>
+
+                </div>
+
+                <!-- Skills -->
+                <div class="link" tabindex="0" onclick="openLink('https://ajith-data-analyst.github.io/Portfolio/skill.html')">
+
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="Skills & Tools">
+                    </div>
+
+                    <div>
+                        <h3>Skills</h3>
+                        <span>Technical Tools & Core Competencies</span>
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+            <div class="footer">
+                Updated • 2026 • Digital Verification System
+            </div>
+
+        </div>
+
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
     <script>
-        function goToLink1() {
-            window.location.href = "https://ajith-data-analyst.github.io/Portfolio/Ajith_R_Resume.pdf";
+        function openLink(url) {
+            window.open(url, "_blank");
         }
 
-        function goToLink2() {
-            window.location.href = "https://sathyabama-est.github.io/links/ajith%20athar.pdf";
+        function copyLink() {
+            navigator.clipboard.writeText(location.href);
+            alert("Profile link copied successfully");
         }
 
-        function goToLink3() {
-            window.location.href = "https://sathyabama-est.github.io/links/PDFGallery_20260219_120334.pdf";
+        function downloadResume() {
+            openLink("https://sathyabama-est.github.io/links/LTIMindtree%20(1).pdf");
         }
 
-        function goToLink4() {
-            window.location.href = "https://ajith-data-analyst.github.io/Portfolio/certification.html#section1";
-        }
-
-        function goToLink5() {
-            window.location.href = "https://ajith-data-analyst.github.io/Portfolio/home.html";
-        }
-
-        function goToLink6() {
-            window.location.href = "https://github.com/Ajith-data-analyst";
-        }
-
-        function goToLink7() {
-            window.location.href = "https://www.linkedin.com/in/ajith-ramesh-data-analyst/";
-        }
-
-        function goToLink8() {
-            window.location.href = "https://ajith-data-analyst.github.io/Portfolio/home.html";
-        }
+        new QRCode(document.getElementById("qr"), {
+            text: location.href,
+            width: 130,
+            height: 130
+        });
     </script>
 
 </body>
-
 
 </html>
