@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Number Check</title>
+</head>
+<body style="margin:0; font-family:Arial, sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; text-align:center;">
+
+    <div>
+        <h2>Please enter Ajith R University register number in the forwarded mail</h2>
+
+        <input type="text" id="regNumber" placeholder="Enter Register Number" 
+               style="padding:10px; width:250px; max-width:80%; font-size:16px;">
+
+        <br><br>
+
+        <button onclick="checkNumber()" 
+                style="padding:10px 20px; font-size:16px; cursor:pointer;">
+            Submit
+        </button>
+
+        <br><br>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkNumber() {
+            var input = document.getElementById("regNumber").value;
+
+            if (input === "43735039") {
+                document.getElementById("result").innerHTML = 
+                    '<a href="https://sathyabama-est.github.io/links/2026Mar@000378_OfferOfEmployment.pdf" target="_blank">' +
+                    '<button style="padding:10px 20px; font-size:16px;">view and download my resume</button></a>';
+            } else {
+                location.reload();
+            }
+        }
+    </script>
+
+</body>
+</html>
